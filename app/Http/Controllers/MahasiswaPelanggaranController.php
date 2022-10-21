@@ -60,31 +60,46 @@ class MahasiswaPelanggaranController extends Controller
         ]);
     }
 
-    public function storeLapor(Request $request){
+    public function getAllDosen(Request $request)
+    {
+        $search = $request->q;
+
+        if ($search == null) {
+            $data = Pengurus::join('users', 'users.id', '=', 'pengurus.user_id')->orderby('nama', 'asc')->select('pengurus.id', 'nama as text')->whereNotIn('role', ['akademik'])->limit(5)->get();
+        } else {
+            $data = Pengurus::join('users', 'users.id', '=', 'pengurus.user_id')->orderby('nama', 'asc')->select('pengurus.id', 'nama as text')->whereNotIn('role', ['akademik'])->where('nama', 'like', '%' . $search . '%')->limit(5)->get();
+        }
+
+        return response()->json($data);
+    }
+
+    public function storeLapor(Request $request)
+    {
         $lapor = new LaporPelanggaran();
         $lapor->penerima_lapor = $request->dosen;
         $lapor->pelanggaran_mahasiswa_id = $request->id_pelanggaran;
         $lapor->tanggal = Carbon::now()->toDateString();
         $lapor->save();
-        
+
         return redirect()->back()->with('message', 'laporBerhasil');
     }
 
-    public function chartJSON(){
+    public function chartJSON()
+    {
         $user = new User();
         $pelanggaran = new PelanggaranMahasiswa();
         $data = [];
         $nim  = $user->getProfile(auth()->user())->nim;
-        
+
         $data['kemajuanLapor'] = $pelanggaran->kemajuanLapor($nim);
         $data['pelanggaranTerakhir'] = $pelanggaran->pelanggaranTerakhirMahasiswa($nim);
 
 
         return response()->json($data);
-        
     }
 
-    public function unduhSurat(Request $request){
+    public function unduhSurat(Request $request)
+    {
         $user = new User();
         $profile = $user->getProfile(auth()->user());
 
@@ -97,11 +112,11 @@ class MahasiswaPelanggaranController extends Controller
             'jum_lapor' => $request->jum_lapor,
         ];
 
-        
+
         // return view('templates.surat-bebas', $data);
-        
+
         $pdf = Pdf::loadView('templates.surat-bebas', $data);
-        
+
         return $pdf->download('Surat Keterangan Bebas Lapor.pdf');
     }
 }

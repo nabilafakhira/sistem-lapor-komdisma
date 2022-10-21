@@ -155,7 +155,22 @@
     @stack('script')
     <script>
         $(document).ready(function() {
-            $('.select2').select2();
+            $('#selectDosen').select2({
+                    dropdownParent: $('#Lapor'),
+                    ajax: {
+                        url: "{{ route('get.dosen') }}",
+                        type: "get",
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(response) {
+                            return {
+                                results: response
+                            };
+                        },
+                        cache: true,
+                    }
+
+                });
             $('input[type="checkbox"].check-all').click(function() { // Ketika user men-cek checkbox all
                 if ($(this).is(":checked")) // Jika checkbox all diceklis
                     $('input[type="checkbox"].check-item').prop("checked",

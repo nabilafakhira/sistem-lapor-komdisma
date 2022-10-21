@@ -96,7 +96,7 @@
                 @endif
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <!-- Detail Pelanggaran -->
@@ -359,6 +359,7 @@
                                                 <span
                                                     class='badge badge-md badge-secondary ml-3 mb-0'>{{ $statusSkorsing }}</span>
                                             @break
+
                                             @case('Mengajukan penundaan')
                                                 <span
                                                     class='badge badge-md badge-secondary ml-3 mb-0'>{{ $statusSkorsing }}</span>
@@ -385,7 +386,7 @@
 
 
         <!-- Modal Tambah Lapor -->
-        <div class="modal fade" id="Lapor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Lapor" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -400,11 +401,9 @@
                             @csrf
                             <input type="hidden" name="id_pelanggaran" value="{{ $pelanggaran->id_pelanggaran }}">
                             <div class="form-group">
-                                <select class="custom-select select2" id="dosen" name="dosen" required>
-                                    <option value="" selected>Pilih Dosen</option>
-                                    @foreach ($dosen as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama }}</option>
-                                    @endforeach
+                                <select class="custom-select select2" id="selectDosen" name="dosen" required
+                                    style='width: 100%;'>
+                                    <option value="" selected>Pilih dosen</option>
                                 </select>
                                 <div class="invalid-feedback">Silahkan pilih dosen</div>
                             </div>

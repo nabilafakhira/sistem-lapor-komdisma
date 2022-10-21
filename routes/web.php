@@ -47,6 +47,7 @@ Route::get('/login', [AuthController::class, 'loginMahasiswa'])->name('login.mah
 Route::post('/login', [AuthController::class, 'postLoginMahasiswa'])->name('post.login.mahasiswa');
 Route::get('/pengurus/logout', [AuthController::class, 'logoutPengurus'])->name('logout.pengurus');
 Route::get('/mahasiswa/logout', [AuthController::class, 'logoutMahasiswa'])->name('logout.mahasiswa');
+Route::any('/all/dosen', [MahasiswaPelanggaranController::class, 'getAllDosen'])->name('get.dosen');
 
 //Role: Super Admin
 Route::middleware(['login', 'role:super-admin'])->group(function () {
