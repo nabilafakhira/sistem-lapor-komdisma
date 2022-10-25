@@ -103,10 +103,11 @@ class MahasiswaPelanggaranController extends Controller
         $user = new User();
         $profile = $user->getProfile(auth()->user());
 
+        $inspektur = Pengurus::find($request->inspektur);
         $data = [
             'user'  => $profile,
             'prodi' => $request->prodi,
-            'nama_inspektur' => $request->nama_inspektur,
+            'inspektur' => $inspektur,
             'tgl_surat_bebas' => $request->tgl_surat_bebas,
             'tgl_terakhir_lapor' => $request->tgl_terakhir_lapor,
             'jum_lapor' => $request->jum_lapor,

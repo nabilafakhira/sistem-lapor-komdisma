@@ -75,12 +75,14 @@
             <div style="width: 50%; text-align: left; float: right;">Bogor, {{ $tgl_surat_bebas }}</div><br><br>
             <div style="width: 50%; text-align: left; float: right; margin-top:-18px;">Komisi Disiplin dan Kemahasiswaan
             </div><br><br><br><br><br><br><br><br>
-            {{-- <div style="width: 50%; text-align: left; float: right;"><img
-                    src="https://raw.githubusercontent.com/komdismasvipb/ttdsurat/main/foto/{{ $nama_inspektur }}.jpg"
-                    style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br> --}}
+            @if ($inspektur->ttd == null)
             <div style="width: 50%; text-align: left; float: right;"><img
-                    src="{{ public_path('img/default-image.jpg') }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
-            <div style="width: 50%; text-align: left; float: right; margin-top:-35px;">{{ $nama_inspektur }}</div><br>
+                src="{{ public_path("img/ttd-null.jpeg") }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
+            @else
+            <div style="width: 50%; text-align: left; float: right;"><img
+                    src="{{ public_path("img/ttd/$inspektur->ttd") }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
+            <div style="width: 50%; text-align: left; float: right; margin-top:-35px;">{{ $inspektur->nama }}</div><br>
+            @endif
         </div>
         <br>
         <br>

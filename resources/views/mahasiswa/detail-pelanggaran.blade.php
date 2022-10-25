@@ -64,6 +64,8 @@
                             value="{{ $pelanggaran->tgl_surat_bebas ? $pelanggaran->tgl_surat_bebas_lengkap : '' }}">
                         <input type="hidden" name="nama_inspektur"
                             value="{{ $pelanggaran->inspektur ? $pelanggaran->nama_inspektur : '' }}">
+                        <input type="hidden" name="inspektur"
+                            value="{{ $pelanggaran->inspektur }}">
                         <input type="hidden" name="tgl_terakhir_lapor"
                             value="{{ $lastLapor != null ? $lastLapor : $pelanggaran->tgl_surat_bebas_lengkap }}">
                         <input type="hidden" name="prodi" value="{{ $pelanggaran->nama_prodi }}">

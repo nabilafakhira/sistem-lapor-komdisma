@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Prodi;
+use App\Models\Pengurus;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -19,7 +20,7 @@ class SuratKelakuanBaikController extends Controller
         $user = new User();
         $surat = new SuratKelakuanBaik();
         $profile = $user->getProfile(auth()->user());
-        // dd($surat->getAll());
+    
         return view('komdisma.list-surat-kelakuan-baik', [
             'title' => 'Surat Berkelakuan Baik',
             'user'  => $profile,
@@ -92,10 +93,13 @@ class SuratKelakuanBaikController extends Controller
         $surat = new SuratKelakuanBaik();
         $profile = $user->getProfile(auth()->user());
 
+        $koordinator = Pengurus::find('196009141986032001');
+
         $data = [
             'user'  => $profile,
             'prodi' => $request->prodi,
             'ttl' => $request->ttl,
+            'koordinator' => $koordinator,
             'alamat' => $request->alamat,
             'tgl_pengajuan' => $surat->pengajuanTerakhir($profile->nim)['tgl_pengajuan_lengkap'],
         ];
