@@ -80,7 +80,7 @@
                 src="{{ public_path("img/ttd-null.jpeg") }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
             @else
             <div style="width: 50%; text-align: left; float: right;"><img
-                    src="{{ public_path("img/ttd/$inspektur->ttd") }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
+                    src="{{ storage_path("app/public/ttd/$inspektur->ttd") }}" style="width:auto; height:110px; object-fit:scale-down; margin-top:-120px;"></div><br><br>
             <div style="width: 50%; text-align: left; float: right; margin-top:-35px;">{{ $inspektur->nama }}</div><br>
             @endif
         </div>

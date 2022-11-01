@@ -93,7 +93,7 @@
                     <p>Koordinator Komisi Disiplin dan Kemahasiswaan</p>
                     <p style="margin-top:-15px;">Sekolah Vokasi IPB</p>
                     @if ($koordinator != null && $koordinator->ttd != null)
-                        <p><img src="{{ public_path("img/ttd/$koordinator->ttd") }}"
+                        <p><img src="{{ storage_path("app/public/ttd/$koordinator->ttd") }}"
                                 style="height:125px;"></p>
                     @else
                     <p><img src="{{ public_path("img/ttd-null.jpeg") }}"

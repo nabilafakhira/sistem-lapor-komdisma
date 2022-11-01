@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="form-group col-md-4 col-sm-12">
-                        <img src="{{ asset("upload/tingkat$detail->tingkat/$detail->bukti_foto") }}" class="img-fluid"
+                        <img src="{{ asset("storage/upload/tingkat$detail->tingkat/$detail->bukti_foto") }}" class="img-fluid"
                             width="300">
                     </div>
                     <div class="col-md-8 col-sm-12">

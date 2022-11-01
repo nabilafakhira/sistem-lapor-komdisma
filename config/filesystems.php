@@ -34,6 +34,16 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        
+        'foto_pelanggaran' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/upload'),
+        ],
+
+        'ttd' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/ttd'),
+        ],
 
         'public' => [
             'driver' => 'local',

@@ -13,6 +13,7 @@ use App\Models\LokasiPelanggaran;
 use App\Models\PenundaanSkorsing;
 use App\Models\KategoriPelanggaran;
 use App\Models\PelanggaranMahasiswa;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class TambahPelanggaranController extends Controller
@@ -86,9 +87,11 @@ class TambahPelanggaranController extends Controller
         $file = $request->file('bukti_foto');
         $extension = '.'.$file->extension();
         $filename  = Carbon::now()->timestamp . $request->nim . $extension;
-        $file->move(public_path("upload/tingkat$request->tingkat"), $filename);
+        $save = $file->storeAs("tingkat$request->tingkat", $filename, ['disk' => 'foto_pelanggaran']);
 
-        $data = [
+        // dd($save);
+
+            $data = [
             'nim' => $request->nim,
             'tingkat' => $request->tingkat,
             'tanggal' => $request->tanggal,

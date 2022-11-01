@@ -25,7 +25,7 @@
                                     data-target="#importExcel"><i class="fa fa-upload mr-2"></i>Import Excel</button>
                             </div>
                             <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                <a class="btn btn-primary btn-sm" href="{{ asset('excel/Format Import Mahasiswa.xlsx') }}"
+                                <a class="btn btn-primary btn-sm" href="{{ asset('storage/excel/Format Import Mahasiswa.xlsx') }}"
                                     download data-toggle="tooltip" data-placement="top" title="Unduh Format Excel"><i
                                         class="fas fa-file"></i></a>
                             </div>

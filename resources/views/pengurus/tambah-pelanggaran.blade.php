@@ -173,7 +173,7 @@
                                                                     <td>{{ $p->nama_kategori }}</td>
                                                                     <td>{{ $p->nama_jenis }}</td>
                                                                     <td>{{ $p->keterangan }}</td>
-                                                                    <td><img src="{{ asset("upload/tingkat$p->tingkat/$p->bukti_foto") }}"
+                                                                    <td><img src="{{ asset("storage/upload/tingkat$p->tingkat/$p->bukti_foto") }}"
                                                                             class="img-fluid" width="75"></td>
                                                                     <td>
                                                                         @switch($p->status)

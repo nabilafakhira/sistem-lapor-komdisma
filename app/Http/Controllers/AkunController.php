@@ -26,7 +26,7 @@ class AkunController extends Controller
                 ->get();
             if ($getPelanggaran != null) {
                 foreach ($getPelanggaran as $row) {
-                    unlink(public_path("upload/tingkat$row->tingkat/$row->bukti_foto"));
+                    unlink(storage_path("app/public/upload/tingkat$row->tingkat/$row->bukti_foto"));
                 }
             }
             User::whereIn('id', $id)->delete();
@@ -154,7 +154,7 @@ class AkunController extends Controller
                 $file = $request->file('ttd');
                 $extension = '.' . $file->extension();
                 $filename  = $request->id . $extension;
-                $file->move(public_path("img/ttd"), $filename);
+                $file->storeAs("", $filename, ['disk' => 'ttd']);
                 $pengurus = Pengurus::find($request->id);
                 $pengurus->ttd = $filename;
                 $pengurus->save();
