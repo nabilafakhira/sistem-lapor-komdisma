@@ -78,7 +78,7 @@
 
         </div>
 
-        <div class="row text-white justify-content-center small">
+        <div class="row text-white justify-content-center small text-center">
             Copyright &copy; Komisi Disiplin dan Kemahasiswaan Sekolah Vokasi IPB {{ date('Y') }}. All rights reserved.
         </div>
 
